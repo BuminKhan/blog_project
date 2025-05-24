@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Gezgin Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fas fa-plane-departure"></i> Gezgin</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="about.html">Hakkımda</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="login.html" id="login-link">Giriş</a></li>
+                    <li><a href="#" id="logout-link" class="hidden" onclick="logout()">Çıkış</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero admin-hero">
+            <div class="admin-badge"><i class="fas fa-lock"></i> Yönetici Paneli</div>
+            <h2>Gezi Blogu Yönetim Paneli</h2>
+            <p>Gezi yazılarını ekleme, düzenleme ve silme işlemlerini buradan gerçekleştirebilirsiniz.</p>
+        </section>
+
+        <section id="access-denied" class="access-denied">
+            <h2><i class="fas fa-exclamation-triangle"></i> Erişim Yasak</h2>
+            <p>Bu sayfaya erişmek için admin yetkilerine sahip olmanız gerekmektedir.</p>
+            <p>Bu blog kişisel bir gezi blogu olduğu için, sadece blog sahibi içerik ekleyebilir.</p>
+            <p><a href="index.html">Ana sayfaya dön</a> veya <a href="login.html">giriş yap</a></p>
+        </section>
+
+        <section id="admin-panel" class="admin-panel hidden">
+            <div id="post-status" class="hidden"></div>
+            
+            <h2><i class="fas fa-edit"></i> Yeni Gezi Yazısı Ekle</h2>
+            <div class="admin-form">
+                <div class="form-group">
+                    <label for="post-title">Başlık</label>
+                    <input type="text" id="post-title" class="form-input" placeholder="Gezi yazısı başlığı">
+                </div>
+                <div class="form-group">
+                    <label for="post-category">Kategori / Ülke</label>
+                    <select id="post-category" class="form-input">
+                        <option value="">Kategori Seçin</option>
+                        <option value="türkiye">Türkiye</option>
+                        <option value="avrupa">Avrupa</option>
+                        <option value="asya">Asya</option>
+                        <option value="amerika">Amerika</option>
+                        <option value="afrika">Afrika</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="new-post">Gezi Yazısı İçeriği</label>
+                    <textarea id="new-post" placeholder="Gezi yazısı içeriği..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-tags">Etiketler (virgülle ayırın)</label>
+                    <input type="text" id="post-tags" class="form-input" placeholder="örn: İstanbul, Tarih, Müzeler, Yemek">
+                </div>
+                <div class="form-buttons">
+                    <button onclick="addPost()" class="btn"><i class="fas fa-plus"></i> Yazı Ekle</button>
+                </div>
+            </div>
+            
+            <h2 class="mt-4"><i class="fas fa-list"></i> Mevcut Gezi Yazıları</h2>
+            <div id="admin-posts" class="blog-posts">
+                <div class="text-center">
+                    <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                    <p>Yazılar yükleniyor...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hakkımda</h3>
+                    <p>Gezmeyi, yeni yerler keşfetmeyi ve deneyimlerimi paylaşmayı seven bir gezgin. Amacım, seyahat etmek isteyenlere ilham vermek ve yardımcı olmak.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <ul>
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><a href="about.html">Hakkımda</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
+                        <li><a href="privacy.html">Gizlilik Politikası</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@gezginblog.com</li>
+                        <li><i class="fas fa-phone"></i> +90 555 123 45 67</li>
+                        <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gezgin Blog. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminStatus();
+        });
+    </script>
+</body>
+</html>
