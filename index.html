@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gezgin - Seyahat Blog Sitesi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fas fa-plane-departure"></i> Gezgin</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Anasayfa</a></li>
+                    <li><a href="about.html">Hakkında</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="login.html" id="login-link">Giriş</a></li>
+                    <li><a href="#" id="logout-link" class="hidden" onclick="logout()">Çıkış</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Gezi Bloguma Hoş Geldiniz</h2>
+            <p>Dünyayı keşfederken edindiğim deneyimleri, gördüğüm muhteşem yerleri ve kültürel zenginlikleri sizlerle paylaşıyorum. Gezi ve seyahat ile ilgili tüm ipuçları burada!</p>
+        </section>
+
+        <div class="blog-layout">
+            <div class="blog-main">
+                <section id="blog-content">
+                    <div id="blog-loading" class="text-center">
+                        <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                        <p>Blog yazıları yükleniyor...</p>
+                    </div>
+                    <div id="posts" class="blog-posts">
+                    </div>
+                    <div id="no-posts" class="text-center hidden">
+                        <p>Henüz blog yazısı bulunmamaktadır.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="blog-sidebar">
+                <section class="related-posts">
+                    <h3><i class="fas fa-map-marker-alt"></i> Popüler Destinasyonlar</h3>
+                    <div id="popular-posts">
+                        <div class="related-post-item skeleton-loading"></div>
+                        <div class="related-post-item skeleton-loading"></div>
+                        <div class="related-post-item skeleton-loading"></div>
+                    </div>
+                </section>
+
+                <section class="related-posts">
+                    <h3><i class="fas fa-globe-americas"></i> Kategoriler</h3>
+                    <ul id="categories-list">
+                        
+                        <li><a href="#" class="related-post-link" data-category="türkiye">Türkiye</a></li>
+                        <li><a href="#" class="related-post-link" data-category="avrupa">Avrupa</a></li>
+                        <li><a href="#" class="related-post-link" data-category="asya">Asya</a></li>
+                        <li><a href="#" class="related-post-link" data-category="amerika">Amerika</a></li>
+                        <li><a href="#" class="related-post-link" data-category="afrika">Afrika</a></li>
+                    </ul>
+                </section>
+
+                <section class="related-posts">
+                    <h3><i class="fas fa-envelope"></i> Bülten</h3>
+                    <p>Yeni gezi yazılarımdan haberdar olmak için bültenime abone olun.</p>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="E-posta adresiniz">
+                    </div>
+                    <button class="btn btn-block">Abone Ol</button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hakkımda</h3>
+                    <p>Gezmeyi, yeni yerler keşfetmeyi ve deneyimlerimi paylaşmayı seven bir gezgin. Amacım, seyahat etmek isteyenlere ilham vermek ve yardımcı olmak.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <ul>
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><a href="about.html">Hakkımda</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
+                        <li><a href="privacy.html">Gizlilik Politikası</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@gezginblog.com</li>
+                        <li><i class="fas fa-phone"></i> +90 555 123 45 67</li>
+                        <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gezgin Blog. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+            loadPosts();
+            loadPopularPosts();
+        });
+    </script>
+</body>
+</html>
